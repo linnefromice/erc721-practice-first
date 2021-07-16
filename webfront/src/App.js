@@ -4,11 +4,13 @@ import { ethers } from "ethers";
 //NFT.solのdeployファイルをとりこむ。cracoを使ってModuleScopePluginの設定を削除しないとimportできない。
 import {abi,bytecode} from "../../contracts/artifacts/contracts/NFT.sol/NFT.json";
 
+// Metamask を利用している状態でアクセスすること
+// https://metamask.io/
+
 //Providerを作成。Ethereumへのネットワーク接続を管理します。
 let provider;
 let address = ""; //NFTのdeploy時のアドレスを指定する。
 (async() => {
-  console.log(window.ethereum);
   await window.ethereum.request({ method: 'eth_requestAccounts' });
   provider = new ethers.providers.Web3Provider(window.ethereum);
 })();
